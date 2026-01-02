@@ -1,0 +1,21 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+http:
+  login_attempts_threshold: 5
+  cors_allowed_origins:
+    - https://google.com
+    - https://www.home-assistant.io
+    - https://homeassistant.tommass.com
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.2.45 # nginx server"
+    - 192.168.2.0/24 # entire home network"
