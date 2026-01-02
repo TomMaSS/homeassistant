@@ -1,0 +1,100 @@
+esphome:
+  name: ble-tracker  # Changed: hyphens instead of underscores (DHCP compatibility)
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: esp-idf  # Recommended: smaller binaries, better performance
+
+wifi:
+  ssid: "NETIASPOT-2.4GHz-277074_EXT"
+  password: "FrnEgxoujhRg"
+
+  ap:
+    ssid: "BLE Tracker Fallback"
+    password: "vzukUFSe8xkn"
+
+captive_portal:
+
+logger:
+
+api:
+
+ota:
+  platform: esphome
+
+web_server:
+  port: 80
+
+esp32_ble_tracker:
+
+# text_sensor:
+#   - platform: ble_scanner
+#     name: "BLE Devices Scanner"
+
+sensor:
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:40:CC:6C"
+    temperature:
+      name: "BedRoom Temperature"
+    humidity:
+      name: "BedRoom Humidity"
+    battery_level:
+      name: "BedRoom Battery Level"
+    battery_voltage:
+      name: "BedRoom Battery Voltage"
+
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:99:86:B4"
+    temperature:
+      name: "ChildRoom Temperature"
+    humidity:
+      name: "ChildRoom Humidity"
+    battery_level:
+      name: "ChildRoom Battery Level"
+    battery_voltage:
+      name: "ChildRoom Battery Voltage"
+
+  # - platform: atc_mithermometer
+  #   mac_address: "A4:C1:38:40:CC:6C"
+  #   temperature:
+  #     name: "Kitchen Temperature"
+  #   humidity:
+  #     name: "Kitchen Humidity"
+  #   battery_level:
+  #     name: "Kitchen Battery Level"
+  #   battery_voltage:
+  #     name: "Kitchen Battery Voltage"
+      
+  - platform: atc_mithermometer
+    mac_address: "A4:C1:38:55:50:09"
+    temperature:
+      name: "LivingRoom Temperature"
+    humidity:
+      name: "LivingRoom Humidity"
+    battery_level:
+      name: "LivingRoom Battery Level"
+    battery_voltage:
+      name: "LivingRoom Battery Voltage"
+      
+  # - platform: atc_mithermometer
+  #   mac_address: "A4:C1:38:25:E2:15"
+  #   temperature:
+  #     name: "BathRoom Temperature"
+  #   humidity:
+  #     name: "BathRoom Humidity"
+  #   battery_level:
+  #     name: "BathRoom Battery Level"
+  #   battery_voltage:
+  #     name: "BathRoom Battery Voltage"
+  
+  # - platform: atc_mithermometer
+  #   mac_address: "A4:C1:38:83:E4:43"
+  #   temperature:
+  #     name: "Balcony Temperature"
+  #   humidity:
+  #     name: "Balcony Humidity"
+  #   battery_level:
+  #     name: "Balcony Battery Level"
+  #   battery_voltage:
+  #     name: "Balcony Battery Voltage"
