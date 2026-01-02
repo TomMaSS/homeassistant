@@ -1,13 +1,6 @@
 # Loads default set of integrations. Do not remove.
 default_config:
 
-# Load frontend themes from the themes folder
-frontend:
-  themes: !include_dir_merge_named themes
-
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
 
 http:
   login_attempts_threshold: 5
@@ -20,3 +13,41 @@ http:
   trusted_proxies:
     - 192.168.2.45 # nginx server"
     - 192.168.2.0/24 # entire home network"
+
+
+homeassistant:
+  name: Home
+  unit_system: metric
+  time_zone: Europe/Warsaw
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+
+resources:
+  - url: /local/mini-graph-card-bundle.js?v=0.13.0
+    type: module
+  - url: /local/clock-weather-card.js
+    type: module
+  - url: /local/apexcharts-card.js?v=2.2.3
+    type: module
+
+lovelace:
+  mode: yaml
+
+  dashboards:
+    lovelace-rooms: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui/dashboards/rooms.yaml
+      title: Rooms
+      icon: mdi:home-assistant
+      show_in_sidebar: true
+      require_admin: false
+
+
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
