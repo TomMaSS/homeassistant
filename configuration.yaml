@@ -15,6 +15,7 @@ http:
     - https://google.com
     - https://www.home-assistant.io
     - https://homeassistant.tommass.com
+    - https://ha.tommass.com
   use_x_forwarded_for: true
   trusted_proxies:
     - 192.168.2.45 # nginx server"
