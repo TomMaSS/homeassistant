@@ -2,14 +2,12 @@ title: Home Assistant - сервер
 theme: happy
 
 views:
-
   - title: Гостинная
-    icon:  mdi:sony-playstation
+    icon: mdi:sofa
 
     cards:
       - type: vertical-stack
         cards:
-
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.ble_tracker_livingroom_temperature
@@ -29,13 +27,38 @@ views:
               extrema: true
               average: true
 
-          - type: custom:clock-weather-card
-            entity: weather.home
-            time_format: 24
-            date_format: '%A, %d %B %Y'
-            show_week_number: true
-            show_weather_forecast: true
-            show_humidity: true
-            show_wind: true
-            show_pressure: true
-            weather_forecast_days: 5
+      - type: custom:clock-weather-card
+        entity: weather.forecast_home
+        time_format: 24
+        date_format: "%A, %d %B %Y"
+        show_week_number: true
+        show_weather_forecast: true
+        show_humidity: true
+        show_wind: true
+        show_pressure: true
+        weather_forecast_days: 5
+
+  - title: Спальная
+    icon: mdi:bed-king
+
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.ble_tracker_bedroom_temperature
+                name: Температура
+              - entity: sensor.ble_tracker_bedroom_humidity
+                name: Влажность
+            name: Параметры Спальной
+            hours_to_show: 24
+            points_per_hour: 1
+            show:
+              graph: line
+              legend: true
+              icon: false
+              state: true
+              name: true
+              fill: fade
+              extrema: true
+              average: true
