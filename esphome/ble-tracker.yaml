@@ -8,7 +8,7 @@ esp32:
 
 wifi:
   ssid: "NETIASPOT-2.4GHz-277074_EXT"
-  password: "FrnEgxoujhRg"
+  password: !secret home_wifi_password
 
   ap:
     ssid: "BLE Tracker Fallback"
