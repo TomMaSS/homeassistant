@@ -38,6 +38,68 @@ views:
         show_pressure: true
         weather_forecast_days: 5
 
+      - type: vertical-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              show_states: true
+              colorize_states: true
+              title: Показатели
+            span:
+              start: day
+            graph_span: 24h
+            all_series_config:
+              stroke_width: 2
+              extend_to_end: false
+            series:
+              - entity: sensor.ble_tracker_livingroom_temperature
+                group_by:
+                  func: raw
+                  duration: 30min
+                stroke_width: 2
+                name: Температура
+                color_threshold:
+                  - value: 25
+                    color: blue
+                    opacity: 1
+                  - value: 26
+                    color: green
+                  - value: 29
+                    color: red
+              - entity: sensor.ble_tracker_livingroom_humidity
+                group_by:
+                  func: raw
+                  duration: 30min
+                stroke_width: 2
+                name: Влажность
+            apex_config:
+              tooltip:
+                x:
+                  format: 'dddd dd MMM - HH:mm'
+              xaxis:
+                tooltip:
+                  enabled: false
+              legend:
+                show: false
+              grid:
+                borderColor: '#7B7B7B'
+              chart:
+                foreColor: white
+                zoom:
+                  type: x
+                  enabled: true
+                  autoScaleYaxis: true
+                toolbar:
+                  show: true
+                  autoSelected: zoom
+                  tools:
+                    zoom: true
+                    zoomin: false
+                    zoomout: false
+                    pan: true
+                    reset: true
+
   - title: Спальная
     icon: mdi:bed-king
 
