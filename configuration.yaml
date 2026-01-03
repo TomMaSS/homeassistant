@@ -27,9 +27,15 @@ lovelace:
   resources:
     - url: /local/mini-graph-card-bundle.js?v=0.13.0
       type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
     - url: /local/clock-weather-card.js
       type: module
+    - url: /hacsfiles/clock-weather-card/clock-weather-card.js
+      type: module
     - url: /local/apexcharts-card.js?v=2.2.3
+      type: module
+    - url: /hacsfiles/apexcharts-card/apexcharts-card.js
       type: module
 
   dashboards:
