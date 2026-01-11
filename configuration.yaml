@@ -55,3 +55,8 @@ lovelace:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+fan: !include includes/fan.yaml
+sensor: !include includes/sensor.yaml
+switch: !include includes/switch.yaml
+number: !include includes/number.yaml
+humidifier: !include includes/humidifier.yaml

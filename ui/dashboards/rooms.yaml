@@ -103,6 +103,22 @@ views:
             show_color_control: true
             use_light_color: true
 
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Климат**
+
+          - type: humidifier
+            entity: humidifier.bedroom_humidifier
+            features:
+              - type: humidifier-modes
+                modes:
+                  - Low
+                  - Medium
+                  - High
+                  - Humidity
+
   - title: Веранда
     icon: mdi:border-outside
 

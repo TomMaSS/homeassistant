@@ -1,0 +1,36 @@
+- platform: template
+  humidifiers:
+    bedroom_humidifier:
+      friendly_name: "Увлажнитель"
+      device_class: humidifier
+      value_template: "{{ states('fan.humidifier') }}"
+      current_humidity_template: "{{ state_attr('fan.humidifier', 'humidity') }}"
+      target_humidity_template: "{{ state_attr('fan.humidifier', 'target_humidity') }}"
+      mode_template: "{{ state_attr('fan.humidifier', 'preset_mode') }}"
+      available_modes:
+        - "Low"
+        - "Medium"
+        - "High"
+        - "Humidity"
+      min_humidity: 40
+      max_humidity: 80
+      turn_on:
+        action: fan.turn_on
+        target:
+          entity_id: fan.humidifier
+      turn_off:
+        action: fan.turn_off
+        target:
+          entity_id: fan.humidifier
+      set_humidity:
+        action: fan.set_preset_mode
+        target:
+          entity_id: fan.humidifier
+        data:
+          preset_mode: "Humidity"
+      set_mode:
+        action: fan.set_preset_mode
+        target:
+          entity_id: fan.humidifier
+        data:
+          preset_mode: "{{ mode }}"
