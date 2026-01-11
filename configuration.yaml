@@ -25,17 +25,13 @@ frontend:
 lovelace:
   mode: yaml
   resources:
-    # - url: /local/mini-graph-card-bundle.js?v=0.13.0
-    #   type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-    # - url: /local/clock-weather-card.js
-    #   type: module
     - url: /hacsfiles/clock-weather-card/clock-weather-card.js
       type: module
-    # - url: /local/apexcharts-card.js?v=2.2.3
-    #   type: module
     - url: /hacsfiles/apexcharts-card/apexcharts-card.js
+      type: module
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
       type: module
 
   dashboards:
@@ -43,6 +39,13 @@ lovelace:
       mode: yaml
       filename: ui/dashboards/rooms.yaml
       title: Rooms
+      icon: mdi:home-assistant
+      show_in_sidebar: true
+      require_admin: false
+    lovelace-test: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui/dashboards/test.yaml
+      title: Test
       icon: mdi:home-assistant
       show_in_sidebar: true
       require_admin: false

@@ -8,103 +8,41 @@ views:
     cards:
       - type: vertical-stack
         cards:
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.ble_tracker_livingroom_temperature
+                name: Температура
+              - entity: sensor.ble_tracker_livingroom_humidity
+                name: Влажность
+            name: Параметры гостинной
+            hours_to_show: 24
+            points_per_hour: 1
+            show:
+              graph: line
+              legend: true
+              icon: false
+              state: true
+              name: true
+              fill: fade
+              extrema: true
+              average: true
 
-        - type: custom:mini-graph-card
-          entities:
-            - entity: sensor.ble_tracker_livingroom_temperature
-              name: Температура
-            - entity: sensor.ble_tracker_livingroom_humidity
-              name: Влажность
-          name: Параметры гостинной
-          hours_to_show: 24
-          points_per_hour: 1
-          show:
-            graph: line
-            legend: true
-            icon: false
-            state: true
-            name: true
-            fill: fade
-            extrema: true
-            average: true
-
-        - type: custom:clock-weather-card
-          entity: weather.forecast_home
-          time_format: 24
-          date_format: "%A, %d %B %Y"
-          show_week_number: true
-          show_weather_forecast: true
-          show_humidity: true
-          show_wind: true
-          show_pressure: true
-          weather_forecast_days: 5
+          - type: custom:clock-weather-card
+            entity: weather.forecast_home
+            time_format: 24
+            date_format: "%A, %d %B %Y"
+            show_week_number: true
+            show_weather_forecast: true
+            show_humidity: true
+            show_wind: true
+            show_pressure: true
+            weather_forecast_days: 5
 
       - type: vertical-stack
         cards:
-
-        - type: markdown
-          content: >
-             **Атмосфера**
-
-        - type: custom:apexcharts-card
-          header:
-            show: true
-            show_states: true
-            colorize_states: true
-            title: Показатели
-          span:
-            start: day
-          graph_span: 24h
-          all_series_config:
-            stroke_width: 2
-            extend_to_end: false
-          series:
-            - entity: sensor.ble_tracker_livingroom_temperature
-              group_by:
-                func: raw
-                duration: 30min
-              stroke_width: 2
-              name: Температура
-              color_threshold:
-                - value: 25
-                  color: blue
-                  opacity: 1
-                - value: 26
-                  color: green
-                - value: 29
-                  color: red
-            - entity: sensor.ble_tracker_livingroom_humidity
-              group_by:
-                func: raw
-                duration: 30min
-              stroke_width: 2
-              name: Влажность
-          apex_config:
-            tooltip:
-              x:
-                format: 'dddd dd MMM - HH:mm'
-            xaxis:
-              tooltip:
-                enabled: false
-            legend:
-              show: false
-            grid:
-              borderColor: '#7B7B7B'
-            chart:
-              foreColor: white
-              zoom:
-                type: x
-                enabled: true
-                autoScaleYaxis: true
-              toolbar:
-                show: true
-                autoSelected: zoom
-                tools:
-                  zoom: true
-                  zoomin: false
-                  zoomout: false
-                  pan: true
-                  reset: true
+          - type: markdown
+            content: >
+              **Атмосфера**
 
   - title: Спальная
     icon: mdi:bed-king
@@ -112,21 +50,21 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: custom:mini-graph-card
-          entities:
-            - entity: sensor.ble_tracker_bedroom_temperature
-              name: Температура
-            - entity: sensor.ble_tracker_bedroom_humidity
-              name: Влажность
-          name: Параметры Спальной
-          hours_to_show: 24
-          points_per_hour: 1
-          show:
-            graph: line
-            legend: true
-            icon: false
-            state: true
-            name: true
-            fill: fade
-            extrema: true
-            average: true
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.ble_tracker_bedroom_temperature
+                name: Температура
+              - entity: sensor.ble_tracker_bedroom_humidity
+                name: Влажность
+            name: Параметры Спальной
+            hours_to_show: 24
+            points_per_hour: 1
+            show:
+              graph: line
+              legend: true
+              icon: false
+              state: true
+              name: true
+              fill: fade
+              extrema: true
+              average: true
