@@ -8,6 +8,10 @@ views:
     cards:
       - type: vertical-stack
         cards:
+          - type: markdown
+            content: >
+              **Атмосфера**
+
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.ble_tracker_livingroom_temperature
@@ -42,12 +46,27 @@ views:
         cards:
           - type: markdown
             content: >
-              **Атмосфера**
+              **Свет**
+
+          - type: custom:mushroom-entity-card
+            entity: switch.elka_socket_1
+            name: Елка
+            icon: mdi:hexagram
+            fill_container: true
+            tap_action:
+              action: toggle
+            icon_color: amber
 
   - title: Спальная
     icon: mdi:bed-king
 
     cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Атмосфера**
+
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -68,3 +87,54 @@ views:
               fill: fade
               extrema: true
               average: true
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Свет**
+
+          - type: custom:mushroom-light-card
+            entity: light.nastolnaia_lampa
+            name: Настольная лампа
+            icon: mdi:desk-lamp
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: true
+            use_light_color: true
+
+  - title: Веранда
+    icon: mdi:border-outside
+
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Атмосфера**
+
+          - type: custom:clock-weather-card
+            entity: weather.forecast_home
+            time_format: 24
+            date_format: "%A, %d %B %Y"
+            show_week_number: true
+            show_weather_forecast: true
+            show_humidity: true
+            show_wind: true
+            show_pressure: true
+            weather_forecast_days: 5
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Свет**
+
+          - type: custom:mushroom-entity-card
+            entity: switch.girlianda_socket_1
+            name: Гирлянда
+            icon: mdi:string-lights
+            fill_container: true
+            tap_action:
+              action: toggle
+            icon_color: amber

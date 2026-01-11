@@ -1,0 +1,127 @@
+title: Home Assistant - test
+
+views:
+  - title: Test
+    icon: mdi:sofa
+    cards:
+      - type: custom:stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Показатели
+              show_states: true
+              colorize_states: true
+            layout: minimal
+            graph_span: 24h
+            apex_config:
+              chart:
+                type: area
+                height: 160
+                toolbar:
+                  show: false
+                zoom:
+                  enabled: false
+              stroke:
+                curve: smooth
+                width: 2
+              markers:
+                size: 0
+                hover:
+                  size: 0
+              grid:
+                show: false
+                padding:
+                  top: -8
+                  bottom: -6
+                  left: 0
+                  right: 0
+              xaxis:
+                crosshairs:
+                  show: false
+                labels:
+                  show: false
+                axisBorder:
+                  show: false
+                axisTicks:
+                  show: false
+              yaxis:
+                show: false
+              tooltip:
+                intersect: false
+                x:
+                  show: false
+              fill:
+                type: gradient
+                gradient:
+                  type: vertical
+                  shadeIntensity: 0.15
+                  opacityFrom: 0.85
+                  opacityTo: 0.20
+                  stops: [0, 85, 100]
+            series:
+              - entity: sensor.ble_tracker_livingroom_temperature
+                name: Температура
+                color: "#F59E0B" # насыщенный оранжевый
+                group_by:
+                  func: avg
+                  duration: 30min
+
+      - type: custom:apexcharts-card
+        layout: minimal
+        graph_span: 24h
+        header:
+          show: false
+        apex_config:
+          chart:
+            type: area
+            height: 160
+            toolbar:
+              show: false
+            zoom:
+              enabled: false
+          stroke:
+            curve: smooth
+            width: 2
+          markers:
+            size: 0
+            hover:
+              size: 0
+          grid:
+            show: false
+            padding:
+              top: -18 # чуть поднимаем график, чтобы не было “пусто”
+              bottom: -6
+              left: 0
+              right: 0
+          xaxis:
+            crosshairs:
+              show: false
+            labels:
+              show: false
+            axisBorder:
+              show: false
+            axisTicks:
+              show: false
+          yaxis:
+            show: false
+          tooltip:
+            intersect: false
+            x:
+              show: false
+          fill:
+            type: gradient
+            gradient:
+              type: vertical
+              shadeIntensity: 0.15
+              opacityFrom: 0.85
+              opacityTo: 0.20
+              stops: [0, 85, 100]
+        series:
+          - entity: sensor.ble_tracker_livingroom_humidity
+            name: Влажность
+            color: "#3B82F6" # насыщенный синий
+            group_by:
+              func: avg
+              duration: 30min
