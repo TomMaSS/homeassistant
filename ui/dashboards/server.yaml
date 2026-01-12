@@ -1,0 +1,101 @@
+title: Сервер
+
+views:
+  - title: Информация о сервере
+    icon: mdi:server
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Ресурсы**
+
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_processor_use
+                name: Процессор
+              - entity: sensor.system_monitor_memory_usage
+                name: Память
+              - entity: sensor.system_monitor_disk_usage
+                name: Диск
+              - entity: sensor.system_monitor_last_boot
+                name: Последняя загрузка
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Нагрузка системы**
+
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_load_1_min
+                name: Нагрузка 1 мин
+              - entity: sensor.system_monitor_load_5_min
+                name: Нагрузка 5 мин
+              - entity: sensor.system_monitor_load_15_min
+                name: Нагрузка 15 мин
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Память**
+
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_memory_use
+                name: Использовано
+              - entity: sensor.system_monitor_memory_free
+                name: Свободно
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Диск**
+
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_disk_use
+                name: Использовано
+              - entity: sensor.system_monitor_disk_free
+                name: Свободно
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Графики**
+
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.system_monitor_processor_use
+                name: CPU
+              - entity: sensor.system_monitor_memory_usage
+                name: RAM
+            name: CPU и память
+            hours_to_show: 24
+            points_per_hour: 2
+            line_width: 2
+            show:
+              graph: line
+              legend: true
+              fill: fade
+
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.system_monitor_load_1_min
+                name: 1 мин
+              - entity: sensor.system_monitor_load_5_min
+                name: 5 мин
+              - entity: sensor.system_monitor_load_15_min
+                name: 15 мин
+            name: Нагрузка системы
+            hours_to_show: 24
+            points_per_hour: 2
+            line_width: 2
+            show:
+              graph: line
+              legend: true
+              fill: fade

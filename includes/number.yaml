@@ -1,5 +1,5 @@
-- platform: xiaomi_miio_airpurifier
-  host: 192.168.2.16
-  token: 6bbee826f815af09173bba9ae10cae55
-  name: "humidifier"
-  model: deerma.humidifier.jsq
+# - platform: xiaomi_miio_airpurifier
+#   host: 192.168.2.16
+#   token: 6bbee826f815af09173bba9ae10cae55
+#   name: "humidifier"
+#   model: deerma.humidifier.jsq

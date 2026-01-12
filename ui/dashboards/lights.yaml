@@ -1,0 +1,67 @@
+title: Освещение
+
+views:
+  - title: Все светильники
+    icon: mdi:lightbulb-group
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Управление освещением**
+
+          - type: custom:mushroom-light-card
+            entity: light.nastolnaia_lampa
+            name: Настольная лампа
+            icon: mdi:desk-lamp
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: true
+            use_light_color: true
+            fill_container: true
+
+          - type: custom:mushroom-entity-card
+            entity: switch.elka_socket_1
+            name: Елка
+            icon: mdi:pine-tree
+            fill_container: true
+            tap_action:
+              action: toggle
+            icon_color: green
+
+          - type: custom:mushroom-entity-card
+            entity: switch.girlianda_socket_1
+            name: Гирлянда
+            icon: mdi:string-lights
+            fill_container: true
+            tap_action:
+              action: toggle
+            icon_color: amber
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Быстрые действия**
+
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: action
+                icon: mdi:lightbulb-on
+                tap_action:
+                  action: call-service
+                  service: light.turn_on
+                  target:
+                    entity_id: light.nastolnaia_lampa
+                  data:
+                    brightness_pct: 100
+              - type: action
+                icon: mdi:lightbulb-off
+                tap_action:
+                  action: call-service
+                  service: homeassistant.turn_off
+                  target:
+                    entity_id:
+                      - light.nastolnaia_lampa
+                      - switch.elka_socket_1
+                      - switch.girlianda_socket_1

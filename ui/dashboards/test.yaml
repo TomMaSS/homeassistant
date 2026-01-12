@@ -21,3 +21,90 @@ views:
         tap_action:
           action: toggle
         icon_color: amber
+
+      - type: custom:mini-humidifier
+        entity: fan.xiaomi_deerma
+        name: Увлажнитель
+        model: deerma.humidifier.jsq
+        scale: 1
+
+        tap_action:
+          action: more-info
+
+        toggle:
+          icon: mdi:dots-horizontal
+          hide: false
+          default: off
+
+        power:
+          type: button
+          icon: mdi:power
+          hide: false
+
+        secondary_info:
+          type: mode
+          icon: mdi:fan
+
+        target_humidity:
+          icon: mdi:water-percent
+          unit: "%"
+          min: 40
+          max: 80
+          step: 5
+          hide: false
+          hide_indicator: false
+          state:
+            attribute: target_humidity
+          change_action: >
+            (selected, state, entity) =>
+            this.call_service('xiaomi_miio_airpurifier', 'fan_set_target_humidity', { entity_id: entity.entity_id, humidity: selected })
+
+        indicators:
+          humidity:
+            icon: mdi:water
+            unit: "%"
+            round: 0
+            order: 0
+            source:
+              attribute: humidity
+            tap_action:
+              action: more-info
+          temperature:
+            icon: mdi:thermometer
+            unit: "°C"
+            round: 1
+            order: 1
+            source:
+              attribute: temperature
+            tap_action:
+              action: more-info
+          water:
+            icon: mdi:cup-water
+            order: 2
+            source:
+              attribute: no_water
+
+        buttons:
+          mode:
+            icon: mdi:fan
+            type: dropdown
+            order: 0
+            state:
+              attribute: preset_mode
+            source:
+              Low: Низкий
+              Medium: Средний
+              High: Высокий
+              Humidity: Авто
+          led:
+            icon: mdi:lightbulb-outline
+            type: button
+            order: 1
+            state:
+              attribute: led
+          buzzer:
+            icon: mdi:bell
+            type: button
+            order: 2
+            state:
+              attribute: buzzer

@@ -1,0 +1,7 @@
+airpurifier_mode:
+  name: Operation mode
+  options:
+    - Low
+    - Medium
+    - High
+    - Humidity

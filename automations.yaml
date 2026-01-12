@@ -32,3 +32,53 @@
           - switch.girlianda_socket_1
           - switch.elka_socket_1
           - light.nastolnaia_lampa
+
+- id: humidifier_set_mode
+  alias: "Увлажнитель - установить режим"
+  triggers:
+    - trigger: state
+      entity_id: input_select.airpurifier_mode
+  actions:
+    - action: fan.set_preset_mode
+      target:
+        entity_id: fan.xiaomi_deerma
+      data:
+        preset_mode: "{{ states('input_select.airpurifier_mode') }}"
+
+- id: humidifier_set_target_humidity
+  alias: "Увлажнитель - установить целевую влажность"
+  triggers:
+    - trigger: state
+      entity_id: input_number.airhumidifier_target_humidity
+  actions:
+    - action: xiaomi_miio_airpurifier.fan_set_target_humidity
+      target:
+        entity_id: fan.xiaomi_deerma
+      data:
+        humidity: "{{ states('input_number.airhumidifier_target_humidity') | int }}"
+
+- id: humidifier_sync_mode_from_device
+  alias: "Увлажнитель - синхронизация режима"
+  triggers:
+    - trigger: state
+      entity_id: fan.xiaomi_deerma
+      attribute: preset_mode
+  actions:
+    - action: input_select.select_option
+      target:
+        entity_id: input_select.airpurifier_mode
+      data:
+        option: "{{ state_attr('fan.xiaomi_deerma', 'preset_mode') }}"
+
+- id: humidifier_sync_target_from_device
+  alias: "Увлажнитель - синхронизация целевой влажности"
+  triggers:
+    - trigger: state
+      entity_id: fan.xiaomi_deerma
+      attribute: target_humidity
+  actions:
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.airhumidifier_target_humidity
+      data:
+        value: "{{ state_attr('fan.xiaomi_deerma', 'target_humidity') | int }}"

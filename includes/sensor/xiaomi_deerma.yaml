@@ -1,0 +1,33 @@
+- sensor:
+    - name: "Air Humidifier Temperature"
+      unique_id: airhumidifier_temperature
+      unit_of_measurement: "°C"
+      icon: mdi:thermometer
+      state: "{{ state_attr('fan.xiaomi_deerma', 'temperature') }}"
+
+    - name: "Air Humidifier Humidity"
+      unique_id: airhumidifier_humidity
+      unit_of_measurement: "%"
+      icon: mdi:water-percent
+      state: "{{ state_attr('fan.xiaomi_deerma', 'humidity') }}"
+
+    - name: "Air Humidifier Mode"
+      unique_id: airhumidifier_mode
+      icon: mdi:fan
+      state: "{{ state_attr('fan.xiaomi_deerma', 'mode') }}"
+
+    - name: "Air Humidifier Target Humidity"
+      unique_id: airhumidifier_target_humidity
+      unit_of_measurement: "%"
+      icon: mdi:water-percent
+      state: "{{ state_attr('fan.xiaomi_deerma', 'target_humidity') }}"
+
+    - name: "Air Humidifier Speed"
+      unique_id: airhumidifier_speed
+      icon: mdi:speedometer
+      state: "{{ state_attr('fan.xiaomi_deerma', 'mode') }}"
+
+    - name: "Air Humidifier Water"
+      unique_id: airhumidifier_no_water_status
+      icon: mdi:cup-water
+      state: "{{ state_attr('fan.xiaomi_deerma', 'no_water') }}"

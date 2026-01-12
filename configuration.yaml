@@ -35,6 +35,10 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
+    - url: /hacsfiles/mini-humidifier/mini-humidifier-bundle.js
+      type: module
+    - url: /local/mini-humidifier-bundle.js?v=3.1.1
+      type: module
 
   dashboards:
     lovelace-rooms: # Needs to contain a hyphen (-)
@@ -51,12 +55,32 @@ lovelace:
       icon: mdi:home-assistant
       show_in_sidebar: true
       require_admin: false
+    lovelace-lights:
+      mode: yaml
+      filename: ui/dashboards/lights.yaml
+      title: Освещение
+      icon: mdi:lightbulb-group
+      show_in_sidebar: true
+      require_admin: false
+    lovelace-server:
+      mode: yaml
+      filename: ui/dashboards/server.yaml
+      title: Сервер
+      icon: mdi:server
+      show_in_sidebar: true
+      require_admin: false
 
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 fan: !include includes/fan.yaml
-sensor: !include includes/sensor.yaml
-switch: !include includes/switch.yaml
-number: !include includes/number.yaml
-humidifier: !include includes/humidifier.yaml
+
+# sensor: !include includes/sensor.yaml
+# switch: !include includes/switch.yaml
+# number: !include includes/number.yaml
+# humidifier: !include includes/humidifier.yaml
+
+template: !include_dir_merge_list includes/sensor
+
+input_select: !include includes/input_select.yaml
+input_number: !include includes/input_number.yaml
