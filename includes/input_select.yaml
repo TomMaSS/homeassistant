@@ -1,7 +1,15 @@
-airpurifier_mode:
-  name: Operation mode
+humidifier_mode:
+  name: Humidifier Mode
   options:
     - Low
     - Medium
     - High
     - Humidity
+
+airpurifier_mode:
+  name: Air Purifier Mode
+  options:
+    - Auto
+    - Silent
+    - Favorite
+    - Fan

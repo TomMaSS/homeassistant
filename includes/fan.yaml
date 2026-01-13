@@ -10,3 +10,16 @@
   #  IP:       192.168.2.16
   #  TOKEN:    6bbee826f815af09173bba9ae10cae55
   #  MODEL:    deerma.humidifier.jsq
+
+- platform: xiaomi_miio_airpurifier
+  host: 192.168.2.15
+  token: 47e764881453e01af9627082999e6335
+  name: "xiaomi_airpurifier"
+  model: zhimi.airpurifier.mb3
+
+  #  NAME:     Mi Air Purifier 3/3H
+  #  ID:       127154618
+  #  MAC:      04:CF:8C:29:28:51
+  #  IP:       192.168.2.15
+  #  TOKEN:    47e764881453e01af9627082999e6335
+  #  MODEL:    zhimi.airpurifier.mb3

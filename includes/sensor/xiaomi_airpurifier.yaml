@@ -1,0 +1,47 @@
+- sensor:
+    - name: "Air Purifier AQI"
+      unique_id: airpurifier_aqi
+      unit_of_measurement: "AQI"
+      icon: mdi:air-filter
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'aqi') }}"
+
+    - name: "Air Purifier Temperature"
+      unique_id: airpurifier_temperature
+      unit_of_measurement: "°C"
+      icon: mdi:thermometer
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'temperature') }}"
+
+    - name: "Air Purifier Humidity"
+      unique_id: airpurifier_humidity
+      unit_of_measurement: "%"
+      icon: mdi:water-percent
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'humidity') }}"
+
+    - name: "Air Purifier Filter Life"
+      unique_id: airpurifier_filter_life
+      unit_of_measurement: "%"
+      icon: mdi:air-filter
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'filter_life_remaining') }}"
+
+    - name: "Air Purifier Filter Hours"
+      unique_id: airpurifier_filter_hours
+      unit_of_measurement: "ч"
+      icon: mdi:clock-outline
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'filter_hours_used') }}"
+
+    - name: "Air Purifier Motor Speed"
+      unique_id: airpurifier_motor_speed
+      unit_of_measurement: "об/мин"
+      icon: mdi:fan
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'motor_speed') }}"
+
+    - name: "Air Purifier Average AQI"
+      unique_id: airpurifier_average_aqi
+      unit_of_measurement: "AQI"
+      icon: mdi:chart-line
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'average_aqi') }}"
+
+    - name: "Air Purifier Mode"
+      unique_id: airpurifier_mode
+      icon: mdi:fan
+      state: "{{ state_attr('fan.xiaomi_airpurifier', 'preset_mode') }}"

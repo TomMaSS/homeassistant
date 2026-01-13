@@ -76,8 +76,6 @@ views:
             show_color_control: true
             use_light_color: true
 
-      - type: vertical-stack
-        cards:
           - type: markdown
             content: >
               **Климат**
@@ -101,12 +99,38 @@ views:
               extrema: true
               average: true
 
+      - type: vertical-stack
+        cards:
+          # - type: markdown
+          #   content: >
+          #     **Климат**
+
+          # - type: custom:mini-graph-card
+          #   entities:
+          #     - entity: sensor.ble_tracker_bedroom_temperature
+          #       name: Температура
+          #     - entity: sensor.ble_tracker_bedroom_humidity
+          #       name: Влажность
+          #   name: Параметры Спальной
+          #   hours_to_show: 24
+          #   points_per_hour: 1
+          #   show:
+          #     graph: line
+          #     legend: true
+          #     icon: false
+          #     state: true
+          #     name: true
+          #     fill: fade
+          #     extrema: true
+          #     average: true
+
           - type: entities
+            title: Увлажнитель
             entities:
               - entity: fan.xiaomi_deerma
-                name: Увлажнитель
+                name: Питание
                 icon: mdi:air-humidifier
-              - entity: input_select.airpurifier_mode
+              - entity: input_select.humidifier_mode
                 name: Режим
               - entity: input_number.airhumidifier_target_humidity
                 name: Целевая влажность
@@ -116,6 +140,25 @@ views:
                 name: Температура
               - entity: sensor.air_humidifier_water
                 name: Бак пуст
+
+          - type: entities
+            title: Очиститель воздуха
+            entities:
+              - entity: fan.xiaomi_airpurifier
+                name: Питание
+                icon: mdi:air-purifier
+              - entity: input_select.airpurifier_mode
+                name: Режим
+              - entity: input_number.airpurifier_favorite_level
+                name: Уровень мощности
+              - entity: sensor.air_purifier_aqi
+                name: Качество воздуха (AQI)
+              - entity: sensor.air_purifier_filter_life
+                name: Ресурс фильтра
+              - entity: sensor.air_purifier_temperature
+                name: Температура
+              - entity: sensor.air_purifier_humidity
+                name: Влажность
 
   - title: Веранда
     icon: mdi:border-outside

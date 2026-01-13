@@ -5,3 +5,10 @@ airhumidifier_target_humidity:
   step: 1
   unit_of_measurement: "%"
   icon: mdi:water-percent
+
+airpurifier_favorite_level:
+  name: Favorite Level
+  min: 0
+  max: 14
+  step: 1
+  icon: mdi:fan
