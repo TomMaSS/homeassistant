@@ -1,0 +1,4 @@
+- platform: viomi_vacuum_v8
+  host: 192.168.2.20
+  token: !secret viomi_vacuum_token
+  name: 'Байден Н'

@@ -1,0 +1,10 @@
+- sensor:
+    - name: "Влажная уборка"
+      unique_id: vacuum_wet_cleaning_status
+      state: >
+        {% if state_attr('vacuum.baiden_n', 'is_mop') == 1 %}
+          да
+        {% else %}
+          нет
+        {% endif %}
+      icon: mdi:water

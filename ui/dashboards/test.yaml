@@ -108,3 +108,12 @@ views:
             order: 2
             state:
               attribute: buzzer
+
+      - type: custom:xiaomi-vacuum-map-card
+        entity: vacuum.baiden_n
+        vacuum_platform: viomi_vacuum_v8
+        preset_name: viomi_vacuum_v8
+        map_source:
+          camera: camera.xiaomi_cloud_map_extractor
+        calibration_source:
+          camera: true

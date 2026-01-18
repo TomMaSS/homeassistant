@@ -57,6 +57,62 @@ views:
               action: toggle
             icon_color: amber
 
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              **Пылесос**
+
+          - type: custom:xiaomi-vacuum-card
+            entity: vacuum.baiden_n
+            name: Байден Н
+            vendor: xiaomi
+            image: default
+            # image: /local/vacuum.png
+            state:
+              status:
+                label: "Статус: "
+              mode:
+                label: "Режим: "
+            attributes:
+              main_brush: false
+              side_brush: false
+              filter: false
+              sensor: false
+              s_area:
+                key: s_area
+                label: "Площадь: "
+                unit: " м²"
+              s_time:
+                key: s_time
+                label: "Время: "
+                unit: " мин"
+              is_mop:
+                key: is_mop
+                label: "Мойка: "
+            buttons:
+              start:
+                icon: mdi:play
+                label: Старт
+              pause:
+                icon: mdi:pause
+                label: Пауза
+              stop:
+                icon: mdi:stop
+                label: Стоп
+              spot: false
+              locate:
+                icon: mdi:map-marker
+                label: Найти
+              return:
+                icon: mdi:home
+                label: Домой
+
+          # - type: entities
+          #   entities:
+          #     - entity: sensor.vlazhnaia_uborka
+          #       name: "Влажная уборка"
+
   - title: Спальная
     icon: mdi:bed-king
 

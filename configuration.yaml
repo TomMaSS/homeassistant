@@ -39,6 +39,10 @@ lovelace:
       type: module
     - url: /local/mini-humidifier-bundle.js?v=3.1.1
       type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
+      type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
 
   dashboards:
     lovelace-rooms: # Needs to contain a hyphen (-)
@@ -84,3 +88,17 @@ template: !include_dir_merge_list includes/sensor
 
 input_select: !include includes/input_select.yaml
 input_number: !include includes/input_number.yaml
+
+vacuum: !include includes/vacuum.yaml
+
+camera:
+  - platform: xiaomi_cloud_map_extractor
+    host: 192.168.2.20
+    token: !secret viomi_vacuum_token
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    country: de
+    draw:
+      - all
+    attributes:
+      - calibration_points
