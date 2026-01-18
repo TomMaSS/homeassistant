@@ -8,6 +8,29 @@ views:
         cards:
           - type: markdown
             content: >
+              **Добавление Zigbee устройств**
+
+          - type: entities
+            entities:
+              - entity: switch.zigbee2mqtt_permit_join
+                name: Разрешить подключение
+                icon: mdi:cellphone-wireless
+              - entity: sensor.zigbee2mqtt_bridge_state
+                name: Состояние моста
+                icon: mdi:router-wireless
+            footer:
+              type: buttons
+              entities:
+                - entity: switch.zigbee2mqtt_permit_join
+                  name: Включить сопряжение
+                  icon: mdi:plus-circle
+                  tap_action:
+                    action: turn-on
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
               **Ресурсы**
 
           - type: entities

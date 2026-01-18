@@ -356,3 +356,57 @@
       data:
         title: "Обновление Home Assistant"
         message: "Доступна новая версия"
+
+# ===========================================
+# ZigBee Device Pairing (Legacy MQTT approach)
+# Only needed if zigbee2mqtt addon doesn't expose permit_join entity
+# ===========================================
+
+# 15. Включить режим сопряжения Zigbee
+- id: zigbee_enable_join
+  alias: "Zigbee - Включить режим сопряжения"
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.zigbee_permit_join
+      to: "on"
+  actions:
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/permit_join
+        payload: '{"value": true, "time": 600}'
+    - action: timer.start
+      target:
+        entity_id: timer.zigbee_permit_join
+
+# 16. Выключить режим сопряжения Zigbee
+- id: zigbee_disable_join
+  alias: "Zigbee - Выключить режим сопряжения"
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.zigbee_permit_join
+      to: "off"
+  actions:
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/permit_join
+        payload: '{"value": false}'
+    - action: timer.cancel
+      target:
+        entity_id: timer.zigbee_permit_join
+
+# 17. Таймер сопряжения истек
+- id: zigbee_join_timer_finished
+  alias: "Zigbee - Таймер сопряжения истек"
+  triggers:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.zigbee_permit_join
+  actions:
+    - action: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/request/permit_join
+        payload: '{"value": false}'
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.zigbee_permit_join

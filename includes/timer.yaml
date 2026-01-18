@@ -1,0 +1,5 @@
+# ZigBee pairing timer (10 minutes)
+zigbee_permit_join:
+  name: Время сопряжения
+  duration: 600
+  icon: mdi:timer
