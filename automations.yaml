@@ -150,7 +150,7 @@
         - sensor.ble_tracker_livingroom_battery_level
       below: 15
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Низкий заряд батареи"
         message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}%"
@@ -167,7 +167,7 @@
       to: "unavailable"
       for: "02:00:00"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Датчик недоступен"
         message: "{{ trigger.to_state.attributes.friendly_name }} не отвечает более 2 часов"
@@ -181,7 +181,7 @@
       above: 90
       for: "00:05:00"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Высокая нагрузка сервера"
         message: "CPU: {{ states('sensor.system_monitor_processor_use') }}%"
@@ -194,7 +194,7 @@
       entity_id: sensor.system_monitor_disk_usage
       above: 85
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Мало места на диске"
         message: "Использовано: {{ states('sensor.system_monitor_disk_usage') }}%"
@@ -207,7 +207,7 @@
       event: start
   actions:
     - delay: "00:01:00"
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Home Assistant"
         message: "Система перезапущена"
@@ -223,7 +223,7 @@
       above: 100
       for: "00:10:00"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Плохое качество воздуха"
         message: "AQI: {{ states('sensor.air_purifier_aqi') }}"
@@ -236,7 +236,7 @@
       entity_id: sensor.air_purifier_filter_life
       below: 10
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Требуется замена фильтра"
         message: "Ресурс фильтра: {{ states('sensor.air_purifier_filter_life') }}%"
@@ -249,7 +249,7 @@
       entity_id: sensor.air_humidifier_water
       to: "empty"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Увлажнитель"
         message: "Бак для воды пуст"
@@ -271,7 +271,7 @@
         - sensor.ble_tracker_livingroom_temperature
       above: 28
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Критическая температура"
         message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}°C"
@@ -288,7 +288,7 @@
       below: 30
       for: "01:00:00"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Низкая влажность"
         message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}%"
@@ -304,7 +304,7 @@
       from: "cleaning"
       to: "returning"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Пылесос"
         message: "Уборка завершена, возвращается на базу"
@@ -317,7 +317,7 @@
       entity_id: vacuum.baiden_n
       to: "error"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Ошибка пылесоса"
         message: "Пылесос требует внимания"
@@ -339,7 +339,7 @@
       to: "unavailable"
       for: "00:30:00"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Устройство недоступно"
         message: "{{ trigger.to_state.attributes.friendly_name }} не отвечает"
@@ -352,7 +352,7 @@
       entity_id: update.home_assistant_core_update
       to: "on"
   actions:
-    - action: notify.mobile_app_iphone
+    - action: notify.mobile_app_iphone_artem
       data:
         title: "Обновление Home Assistant"
         message: "Доступна новая версия"
