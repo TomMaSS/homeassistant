@@ -1,5 +1,0 @@
-# ZigBee pairing control
-zigbee_permit_join:
-  name: Разрешить подключение Zigbee
-  initial: off
-  icon: mdi:cellphone-wireless
