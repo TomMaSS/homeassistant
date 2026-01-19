@@ -1,0 +1,51 @@
+version: 4
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://core-mosquitto:1883
+  user: mqtt_user
+  password: 4RejlTQsuLgBD0Hz
+serial:
+  port: /dev/ttyACM0
+  adapter: zstack
+  baudrate: 115200
+  rtscts: false
+advanced:
+  log_level: info
+  channel: 11
+  network_key:
+    - 229
+    - 157
+    - 81
+    - 160
+    - 8
+    - 176
+    - 41
+    - 91
+    - 182
+    - 248
+    - 12
+    - 195
+    - 215
+    - 133
+    - 101
+    - 181
+  pan_id: 61976
+  ext_pan_id:
+    - 212
+    - 114
+    - 217
+    - 132
+    - 21
+    - 197
+    - 111
+    - 51
+frontend:
+  enabled: true
+  port: 8099
+homeassistant:
+  enabled: true
+devices:
+  '0x60a423fffefc8181':
+    friendly_name: moes_zigbee_black_4_buttons_switch
+    homeassistant:
+      name: moes_zigbee_black_4_buttons_switch

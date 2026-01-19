@@ -1,0 +1,104 @@
+# ============================================
+# НАСТЕННЫЙ ВЫКЛЮЧАТЕЛЬ (Wall Switch TS004F)
+# ============================================
+
+# === КНОПКА 1: Настольная лампа ===
+
+- id: wall_switch_btn1_single
+  alias: "Выключатель - Кнопка 1 включить лампу"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "1_single"
+  action:
+    - action: light.turn_on
+      target:
+        entity_id: light.nastolnaia_lampa
+      data:
+        brightness_pct: 1
+
+- id: wall_switch_btn1_double
+  alias: "Выключатель - Кнопка 1 лампа 50%"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "1_double"
+  action:
+    - action: light.turn_on
+      target:
+        entity_id: light.nastolnaia_lampa
+      data:
+        brightness_pct: 50
+
+- id: wall_switch_btn1_hold
+  alias: "Выключатель - Кнопка 1 выключить лампу"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "1_hold"
+  action:
+    - action: light.turn_off
+      target:
+        entity_id: light.nastolnaia_lampa
+
+# === КНОПКА 2: Ёлка ===
+
+- id: wall_switch_btn2_single
+  alias: "Выключатель - Кнопка 2 включить ёлку"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "2_single"
+  action:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.elka_socket_1
+
+- id: wall_switch_btn2_hold
+  alias: "Выключатель - Кнопка 2 выключить ёлку"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "2_hold"
+  action:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.elka_socket_1
+
+# === КНОПКА 3: Гирлянда ===
+
+- id: wall_switch_btn3_single
+  alias: "Выключатель - Кнопка 3 включить гирлянду"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "3_single"
+  action:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.girlianda_socket_1
+
+- id: wall_switch_btn3_hold
+  alias: "Выключатель - Кнопка 3 выключить гирлянду"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "3_hold"
+  action:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.girlianda_socket_1
+
+# === КНОПКА 4: Тест ===
+
+- id: wall_switch_btn4_single
+  alias: "Выключатель - Кнопка 4 тест уведомления"
+  trigger:
+    - platform: mqtt
+      topic: zigbee2mqtt/moes_zigbee_black_4_buttons_switch/action
+      payload: "4_single"
+  action:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Тест выключателя"
+        message: "Кнопка 4 нажата!"
