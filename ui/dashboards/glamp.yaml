@@ -1,0 +1,669 @@
+title: Волшебная Лампа
+views:
+  - title: Волшебная Лампа
+    path: glamp
+    panel: true
+    icon: mdi:star-face
+    cards:
+      - type: vertical-stack
+        cards:
+          # ── Top: Brightness / On-Off / Color ──
+          - type: custom:mushroom-light-card
+            entity: light.wled
+            name: Волшебная Лампа
+            icon: mdi:star-face
+            show_brightness_control: true
+            show_color_control: true
+            use_light_color: true
+            fill_container: true
+
+          # ── Bottom: 3 equal columns = 2/3 effects + 1/3 palettes ──
+          - type: horizontal-stack
+            cards:
+              # ── Column 1: Effects 1-15 ──
+              - type: vertical-stack
+                cards:
+                  - type: markdown
+                    content: "## ✨ Эффекты"
+
+                  - type: custom:mushroom-template-card
+                    primary: Радуга
+                    icon: mdi:rainbow
+                    icon_color: purple
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Rainbow
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Салют
+                    icon: mdi:firework
+                    icon_color: red
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Fireworks
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Огонь
+                    icon: mdi:fire
+                    icon_color: deep-orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Fire 2012
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Сияние
+                    icon: mdi:image-filter-drama
+                    icon_color: teal
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Aurora
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Фея
+                    icon: mdi:auto-fix
+                    icon_color: pink
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Fairy
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Звёзды
+                    icon: mdi:star-four-points
+                    icon_color: yellow
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Twinkle
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Свеча
+                    icon: mdi:candle
+                    icon_color: orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Candle
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Молния
+                    icon: mdi:lightning-bolt
+                    icon_color: amber
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Lightning
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Сердце
+                    icon: mdi:heart-pulse
+                    icon_color: red
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Heartbeat
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Океан
+                    icon: mdi:waves
+                    icon_color: cyan
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Pacifica
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Блеск
+                    icon: mdi:creation
+                    icon_color: light-blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Sparkle
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Цвета
+                    icon: mdi:palette
+                    icon_color: purple
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Colorloop
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Метеор
+                    icon: mdi:star-shooting
+                    icon_color: indigo
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Meteor
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Дождь
+                    icon: mdi:weather-rainy
+                    icon_color: blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Rain
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Призрак
+                    icon: mdi:ghost
+                    icon_color: grey
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Ghost Rider
+                        brightness_pct: 100
+
+              # ── Column 2: Effects 16-30 ──
+              - type: vertical-stack
+                cards:
+                  - type: markdown
+                    content: "## ⠀"
+
+                  - type: custom:mushroom-template-card
+                    primary: Мячики
+                    icon: mdi:basketball
+                    icon_color: orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Bouncing Balls
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Матрица
+                    icon: mdi:matrix
+                    icon_color: light-green
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Matrix
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Полярное
+                    icon: mdi:weather-night
+                    icon_color: green
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Polar Lights
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Волны
+                    icon: mdi:sine-wave
+                    icon_color: blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Colorwaves
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Лисичка
+                    icon: mdi:fox
+                    icon_color: orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Twinklefox
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Глиттер
+                    icon: mdi:shimmer
+                    icon_color: light-blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Glitter
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Рассвет
+                    icon: mdi:weather-sunset-up
+                    icon_color: deep-orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Sunrise
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Озеро
+                    icon: mdi:fish
+                    icon_color: cyan
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Lake
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Пчёлки
+                    icon: mdi:bee
+                    icon_color: yellow
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Crazy Bees
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Попкорн
+                    icon: mdi:popcorn
+                    icon_color: amber
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Popcorn
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: ДНК
+                    icon: mdi:dna
+                    icon_color: green
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: DNA Spiral
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Плазма
+                    icon: mdi:circle-outline
+                    icon_color: purple
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Plasma Ball
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Поток
+                    icon: mdi:water-outline
+                    icon_color: teal
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Flow
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Взрыв
+                    icon: mdi:firework
+                    icon_color: red
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Fireworks Starburst
+                        brightness_pct: 100
+
+                  - type: custom:mushroom-template-card
+                    primary: Растворение
+                    icon: mdi:blur
+                    icon_color: light-blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: light.turn_on
+                      data:
+                        entity_id: light.wled
+                        effect: Dissolve Rnd
+                        brightness_pct: 100
+
+              # ── Column 3: Palettes ──
+              - type: vertical-stack
+                cards:
+                  - type: markdown
+                    content: "## 🎨 Цвета"
+
+                  - type: custom:mushroom-template-card
+                    primary: Радуга
+                    icon: mdi:rainbow
+                    icon_color: purple
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Rainbow
+
+                  - type: custom:mushroom-template-card
+                    primary: Лава
+                    icon: mdi:water
+                    icon_color: red
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Lava
+
+                  - type: custom:mushroom-template-card
+                    primary: Океан
+                    icon: mdi:waves
+                    icon_color: blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Ocean
+
+                  - type: custom:mushroom-template-card
+                    primary: Лес
+                    icon: mdi:tree
+                    icon_color: green
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Forest
+
+                  - type: custom:mushroom-template-card
+                    primary: Вечеринка
+                    icon: mdi:party-popper
+                    icon_color: pink
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Party
+
+                  - type: custom:mushroom-template-card
+                    primary: Пламя
+                    icon: mdi:fire
+                    icon_color: deep-orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Fire
+
+                  - type: custom:mushroom-template-card
+                    primary: Сияние
+                    icon: mdi:weather-night
+                    icon_color: teal
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Aurora
+
+                  - type: custom:mushroom-template-card
+                    primary: Сакура
+                    icon: mdi:flower
+                    icon_color: pink
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Sakura
+
+                  - type: custom:mushroom-template-card
+                    primary: Гирлянда
+                    icon: mdi:string-lights
+                    icon_color: amber
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: C9
+
+                  - type: custom:mushroom-template-card
+                    primary: Конфетка
+                    icon: mdi:candy
+                    icon_color: pink
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Candy
+
+                  - type: custom:mushroom-template-card
+                    primary: Закат
+                    icon: mdi:weather-sunset
+                    icon_color: orange
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Sunset
+
+                  - type: custom:mushroom-template-card
+                    primary: Пляж
+                    icon: mdi:beach
+                    icon_color: yellow
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Beach
+
+                  - type: custom:mushroom-template-card
+                    primary: Лёд и пламя
+                    icon: mdi:snowflake
+                    icon_color: cyan
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Icefire
+
+                  - type: custom:mushroom-template-card
+                    primary: Пастель
+                    icon: mdi:palette-swatch
+                    icon_color: light-blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Pastel
+
+                  - type: custom:mushroom-template-card
+                    primary: Облака
+                    icon: mdi:cloud
+                    icon_color: grey
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Cloud
+
+                  - type: custom:mushroom-template-card
+                    primary: Осень
+                    icon: mdi:leaf
+                    icon_color: amber
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Autumn
+
+                  - type: custom:mushroom-template-card
+                    primary: Полоски
+                    icon: mdi:view-sequential
+                    icon_color: purple
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Rainbow Bands
+
+                  - type: custom:mushroom-template-card
+                    primary: Фея
+                    icon: mdi:auto-fix
+                    icon_color: pink
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Fairy Reaf
+
+                  - type: custom:mushroom-template-card
+                    primary: Атлантика
+                    icon: mdi:dolphin
+                    icon_color: blue
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Atlantica
+
+                  - type: custom:mushroom-template-card
+                    primary: Обычный
+                    icon: mdi:circle
+                    icon_color: white
+                    layout: vertical
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      data:
+                        entity_id: select.wled_color_palette
+                        option: Default
