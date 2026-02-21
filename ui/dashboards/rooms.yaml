@@ -57,6 +57,26 @@ views:
               action: toggle
             icon_color: amber
 
+          - type: custom:stack-in-card
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.wled
+                name: GLamp
+                icon: mdi:lava-lamp
+                show_brightness_control: true
+                show_color_temp_control: false
+                show_color_control: true
+                use_light_color: true
+                fill_container: true
+              - type: custom:mushroom-select-card
+                entity: input_select.wled_effect
+                name: Эффект
+                icon: mdi:creation
+              - type: custom:mushroom-select-card
+                entity: select.wled_color_palette
+                name: Палитра
+                icon: mdi:palette
+
       - type: vertical-stack
         cards:
           - type: markdown

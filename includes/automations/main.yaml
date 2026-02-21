@@ -133,3 +133,31 @@
       data:
         value: "{{ state_attr('fan.xiaomi_airpurifier', 'favorite_level') | int }}"
 
+- id: wled_set_effect
+  alias: "GLamp - установить эффект"
+  triggers:
+    - trigger: state
+      entity_id: input_select.wled_effect
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id: light.wled
+      data:
+        effect: "{{ states('input_select.wled_effect') }}"
+
+- id: wled_sync_effect_from_device
+  alias: "GLamp - синхронизация эффекта"
+  triggers:
+    - trigger: state
+      entity_id: light.wled
+      attribute: effect
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.to_state.attributes.effect is not none }}"
+  actions:
+    - action: input_select.select_option
+      target:
+        entity_id: input_select.wled_effect
+      data:
+        option: "{{ state_attr('light.wled', 'effect') }}"
+
