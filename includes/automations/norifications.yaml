@@ -1,0 +1,223 @@
+# ============================================
+# УВЕДОМЛЕНИЯ (Notifications)
+# ============================================
+
+# === КРИТИЧЕСКИЕ УВЕДОМЛЕНИЯ ===
+
+# 1. Низкий заряд батареи датчиков
+- id: notify_low_battery
+  alias: "Уведомление - Низкий заряд батареи"
+  triggers:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.ble_tracker_bedroom_battery_level
+        - sensor.ble_tracker_childroom_battery_level
+        - sensor.ble_tracker_livingroom_battery_level
+      below: 15
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Низкий заряд батареи"
+        message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}%"
+
+# 2. Датчик недоступен
+- id: notify_sensor_offline
+  alias: "Уведомление - Датчик недоступен"
+  triggers:
+    - trigger: state
+      entity_id:
+        - sensor.ble_tracker_bedroom_temperature
+        - sensor.ble_tracker_childroom_temperature
+        - sensor.ble_tracker_livingroom_temperature
+      to: "unavailable"
+      for: "02:00:00"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Датчик недоступен"
+        message: "{{ trigger.to_state.attributes.friendly_name }} не отвечает более 2 часов"
+
+# 3. Высокая нагрузка CPU
+- id: notify_high_cpu
+  alias: "Уведомление - Высокая нагрузка CPU"
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.system_monitor_processor_use
+      above: 90
+      for: "00:05:00"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Высокая нагрузка сервера"
+        message: "CPU: {{ states('sensor.system_monitor_processor_use') }}%"
+
+# 4. Мало места на диске
+- id: notify_low_disk
+  alias: "Уведомление - Мало места на диске"
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.system_monitor_disk_usage
+      above: 85
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Мало места на диске"
+        message: "Использовано: {{ states('sensor.system_monitor_disk_usage') }}%"
+
+# 5. Home Assistant перезапущен
+- id: notify_ha_restart
+  alias: "Уведомление - Home Assistant перезапущен"
+  triggers:
+    - trigger: homeassistant
+      event: start
+  actions:
+    - delay: "00:01:00"
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Home Assistant"
+        message: "Система перезапущена"
+
+# === УВЕДОМЛЕНИЯ КАЧЕСТВА ВОЗДУХА ===
+
+# 6. Плохое качество воздуха
+- id: notify_poor_aqi
+  alias: "Уведомление - Плохое качество воздуха"
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.air_purifier_aqi
+      above: 100
+      for: "00:10:00"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Плохое качество воздуха"
+        message: "AQI: {{ states('sensor.air_purifier_aqi') }}"
+
+# 7. Требуется замена фильтра
+- id: notify_filter_replace
+  alias: "Уведомление - Замена фильтра"
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.air_purifier_filter_life
+      below: 10
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Требуется замена фильтра"
+        message: "Ресурс фильтра: {{ states('sensor.air_purifier_filter_life') }}%"
+
+# 8. Пустой бак увлажнителя
+- id: notify_water_empty
+  alias: "Уведомление - Пустой бак увлажнителя"
+  triggers:
+    - trigger: state
+      entity_id: sensor.air_humidifier_water
+      to: "empty"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Увлажнитель"
+        message: "Бак для воды пуст"
+
+# 9. Критическая температура
+- id: notify_extreme_temp
+  alias: "Уведомление - Критическая температура"
+  triggers:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.ble_tracker_bedroom_temperature
+        - sensor.ble_tracker_childroom_temperature
+        - sensor.ble_tracker_livingroom_temperature
+      below: 16
+    - trigger: numeric_state
+      entity_id:
+        - sensor.ble_tracker_bedroom_temperature
+        - sensor.ble_tracker_childroom_temperature
+        - sensor.ble_tracker_livingroom_temperature
+      above: 28
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Критическая температура"
+        message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}°C"
+
+# 10. Низкая влажность
+- id: notify_low_humidity
+  alias: "Уведомление - Низкая влажность"
+  triggers:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.ble_tracker_bedroom_humidity
+        - sensor.ble_tracker_childroom_humidity
+        - sensor.ble_tracker_livingroom_humidity
+      below: 30
+      for: "01:00:00"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Низкая влажность"
+        message: "{{ trigger.to_state.attributes.friendly_name }}: {{ trigger.to_state.state }}%"
+
+# === УВЕДОМЛЕНИЯ УСТРОЙСТВ ===
+
+# 11. Пылесос завершил уборку
+- id: notify_vacuum_done
+  alias: "Уведомление - Пылесос завершил уборку"
+  triggers:
+    - trigger: state
+      entity_id: vacuum.baiden_n
+      from: "cleaning"
+      to: "returning"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Пылесос"
+        message: "Уборка завершена, возвращается на базу"
+
+# 12. Ошибка пылесоса
+- id: notify_vacuum_error
+  alias: "Уведомление - Ошибка пылесоса"
+  triggers:
+    - trigger: state
+      entity_id: vacuum.baiden_n
+      to: "error"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Ошибка пылесоса"
+        message: "Пылесос требует внимания"
+        data:
+          push:
+            sound:
+              name: default
+              critical: 1
+
+# 13. Устройство недоступно
+- id: notify_device_offline
+  alias: "Уведомление - Устройство недоступно"
+  triggers:
+    - trigger: state
+      entity_id:
+        - fan.xiaomi_airpurifier
+        - fan.xiaomi_deerma
+        - vacuum.baiden_n
+      to: "unavailable"
+      for: "00:30:00"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Устройство недоступно"
+        message: "{{ trigger.to_state.attributes.friendly_name }} не отвечает"
+
+# 14. Доступно обновление Home Assistant
+- id: notify_ha_update
+  alias: "Уведомление - Доступно обновление HA"
+  triggers:
+    - trigger: state
+      entity_id: update.home_assistant_core_update
+      to: "on"
+  actions:
+    - action: notify.mobile_app_iphone_artem
+      data:
+        title: "Обновление Home Assistant"
+        message: "Доступна новая версия"
