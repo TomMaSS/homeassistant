@@ -16,6 +16,16 @@ views:
             show_color_control: true
             use_light_color: true
             fill_container: true
+            card_mod:
+              style: |
+                ha-card {
+                  background: rgba(255, 255, 255, 0.1) !important;
+                  backdrop-filter: blur(12px) !important;
+                  -webkit-backdrop-filter: blur(12px) !important;
+                  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                  border-radius: 24px !important;
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+                }
 
           # ── Speed & Intensity sliders ──
           - type: horizontal-stack
@@ -25,23 +35,62 @@ views:
                 name: Скорость
                 icon: mdi:speedometer
                 fill_container: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.08) !important;
+                      backdrop-filter: blur(10px) !important;
+                      -webkit-backdrop-filter: blur(10px) !important;
+                      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                      border-radius: 20px !important;
+                    }
               - type: custom:mushroom-number-card
                 entity: number.wled_intensity
                 name: Яркость эффекта
                 icon: mdi:blur-radial
                 fill_container: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: rgba(255, 255, 255, 0.08) !important;
+                      backdrop-filter: blur(10px) !important;
+                      -webkit-backdrop-filter: blur(10px) !important;
+                      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                      border-radius: 20px !important;
+                    }
 
           # ── Section headers ──
           - type: horizontal-stack
             cards:
               - type: markdown
                 content: "## ✨ Эффекты"
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      border: none !important;
+                      box-shadow: none !important;
+                    }
               - type: markdown
                 content: "## ✨ Эффекты"
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      border: none !important;
+                      box-shadow: none !important;
+                    }
               - type: markdown
                 content: "## 🎨 Цвета"
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: transparent !important;
+                      border: none !important;
+                      box-shadow: none !important;
+                    }
 
-          # ── Bottom: 3 equal columns = 2/3 effects + 1/3 palettes ──
+          # ── Bottom: 3 equal columns ──
           - type: horizontal-stack
             cards:
               # ── Column 1: Effects 1-15 ──
@@ -50,7 +99,6 @@ views:
                   - type: custom:mushroom-template-card
                     primary: Радуга
                     icon: mdi:rainbow
-                    icon_color: purple
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -58,11 +106,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Rainbow
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/rainbow.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Салют
                     icon: mdi:firework
-                    icon_color: red
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -70,11 +146,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fireworks
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/fireworks.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Огонь
                     icon: mdi:fire
-                    icon_color: deep-orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -82,11 +186,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fire 2012
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/fire.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Сияние
                     icon: mdi:image-filter-drama
-                    icon_color: teal
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -94,11 +226,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Aurora
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/aurora.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Фея
                     icon: mdi:auto-fix
-                    icon_color: pink
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -106,11 +266,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fairy
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/fairy.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Звёзды
                     icon: mdi:star-four-points
-                    icon_color: yellow
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -118,11 +306,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Twinkle
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/stars.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Свеча
                     icon: mdi:candle
-                    icon_color: orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -130,11 +346,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Candle
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/candle.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Молния
                     icon: mdi:lightning-bolt
-                    icon_color: amber
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -142,11 +386,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Lightning
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/lightning.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 191, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Сердце
                     icon: mdi:heart-pulse
-                    icon_color: red
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -154,11 +426,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Heartbeat
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/heartbeat.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 0, 50, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Океан
                     icon: mdi:waves
-                    icon_color: cyan
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -166,11 +466,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Pacifica
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/ocean.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Блеск
                     icon: mdi:creation
-                    icon_color: light-blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -178,11 +506,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Sparkle
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/sparkle.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(135, 206, 250, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Цвета
                     icon: mdi:palette
-                    icon_color: purple
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -190,11 +546,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Colorloop
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/colorloop.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Метеор
                     icon: mdi:star-shooting
-                    icon_color: indigo
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -202,11 +586,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Meteor
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/meteor.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Дождь
                     icon: mdi:weather-rainy
-                    icon_color: blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -214,11 +626,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Rain
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/rain.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Призрак
                     icon: mdi:ghost
-                    icon_color: grey
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -226,6 +666,35 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Ghost Rider
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/ghost.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(128, 128, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
               # ── Column 2: Effects 16-30 ──
               - type: vertical-stack
@@ -233,7 +702,6 @@ views:
                   - type: custom:mushroom-template-card
                     primary: Мячики
                     icon: mdi:basketball
-                    icon_color: orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -241,11 +709,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Bouncing Balls
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/balls.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Матрица
                     icon: mdi:matrix
-                    icon_color: light-green
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -253,11 +749,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Matrix
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/matrix.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Полярное
                     icon: mdi:weather-night
-                    icon_color: green
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -265,11 +789,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Polar Lights
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/polar.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 128, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Волны
                     icon: mdi:sine-wave
-                    icon_color: blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -277,11 +829,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Colorwaves
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/waves.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Лисичка
                     icon: mdi:fox
-                    icon_color: orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -289,11 +869,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Twinklefox
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/fox.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Глиттер
                     icon: mdi:shimmer
-                    icon_color: light-blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -301,11 +909,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Glitter
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/glitter.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(135, 206, 250, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Рассвет
                     icon: mdi:weather-sunset-up
-                    icon_color: deep-orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -313,11 +949,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Sunrise
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/sunrise.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Озеро
                     icon: mdi:fish
-                    icon_color: cyan
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -325,11 +989,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Lake
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/lake.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Пчёлки
                     icon: mdi:bee
-                    icon_color: yellow
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -337,11 +1029,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Crazy Bees
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/bees.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Попкорн
                     icon: mdi:popcorn
-                    icon_color: amber
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -349,11 +1069,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Popcorn
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/popcorn.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 191, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: ДНК
                     icon: mdi:dna
-                    icon_color: green
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -361,11 +1109,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: DNA Spiral
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/dna.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 128, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Плазма
                     icon: mdi:circle-outline
-                    icon_color: purple
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -373,11 +1149,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Plasma Ball
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/plasma.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(128, 0, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Поток
                     icon: mdi:water-outline
-                    icon_color: teal
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -385,11 +1189,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Flow
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/flow.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Взрыв
                     icon: mdi:firework
-                    icon_color: red
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -397,11 +1229,39 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fireworks Starburst
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/starburst.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Растворение
                     icon: mdi:blur
-                    icon_color: light-blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -409,6 +1269,35 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Dissolve Rnd
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/dissolve.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(135, 206, 250, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
               # ── Column 3: Palettes ──
               - type: vertical-stack
@@ -416,7 +1305,6 @@ views:
                   - type: custom:mushroom-template-card
                     primary: Радуга
                     icon: mdi:rainbow
-                    icon_color: purple
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -424,11 +1312,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Rainbow
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/pal_rainbow.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Лава
                     icon: mdi:water
-                    icon_color: red
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -436,11 +1352,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Lava
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/lava.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.35) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Океан
                     icon: mdi:waves
-                    icon_color: blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -448,11 +1392,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Ocean
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/pal_ocean.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Лес
                     icon: mdi:tree
-                    icon_color: green
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -460,11 +1432,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Forest
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/forest.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Вечеринка
                     icon: mdi:party-popper
-                    icon_color: pink
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -472,11 +1472,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Party
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/party.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Пламя
                     icon: mdi:fire
-                    icon_color: deep-orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -484,11 +1512,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Fire
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/pal_fire.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Сияние
                     icon: mdi:weather-night
-                    icon_color: teal
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -496,11 +1552,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Aurora
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/pal_aurora.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Сакура
                     icon: mdi:flower
-                    icon_color: pink
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -508,11 +1592,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Sakura
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/sakura.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(244, 143, 177, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Гирлянда
                     icon: mdi:string-lights
-                    icon_color: amber
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -520,11 +1632,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: C9
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/garland.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 191, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Конфетка
                     icon: mdi:candy
-                    icon_color: pink
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -532,11 +1672,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Candy
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/candy.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Закат
                     icon: mdi:weather-sunset
-                    icon_color: orange
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -544,11 +1712,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Sunset
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/sunset.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Пляж
                     icon: mdi:beach
-                    icon_color: yellow
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -556,11 +1752,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Beach
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/beach.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Лёд и пламя
                     icon: mdi:snowflake
-                    icon_color: cyan
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -568,11 +1792,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Icefire
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/icefire.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Пастель
                     icon: mdi:palette-swatch
-                    icon_color: light-blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -580,11 +1832,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Pastel
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/pastel.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(135, 206, 250, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Облака
                     icon: mdi:cloud
-                    icon_color: grey
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -592,11 +1872,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Cloud
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/cloud.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(128, 128, 128, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Осень
                     icon: mdi:leaf
-                    icon_color: amber
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -604,11 +1912,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Autumn
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/autumn.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(255, 191, 0, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Полоски
                     icon: mdi:view-sequential
-                    icon_color: purple
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -616,11 +1952,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Rainbow Bands
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/bands.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Фея
                     icon: mdi:auto-fix
-                    icon_color: pink
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -628,11 +1992,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Fairy Reaf
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/fairy_reef.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Атлантика
                     icon: mdi:dolphin
-                    icon_color: blue
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -640,11 +2032,39 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Atlantica
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/atlantica.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
 
                   - type: custom:mushroom-template-card
                     primary: Обычный
                     icon: mdi:circle
-                    icon_color: white
                     layout: vertical
                     tap_action:
                       action: call-service
@@ -652,3 +2072,32 @@ views:
                       data:
                         entity_id: select.wled_color_palette
                         option: Default
+                    card_mod:
+                      style:
+                        mushroom-shape-icon$: |
+                          .shape {
+                            --shape-color: none !important;
+                            --icon-color: #fff !important;
+                            --icon-size: 42px;
+                          }
+                        .: |
+                          ha-card {
+                            background: url('/local/glamp/default.png') center/cover no-repeat !important;
+                            aspect-ratio: 1 / 1;
+                            max-width: 250px;
+                            border-radius: 16px !important;
+                            border: none !important;
+                            color: #fff !important;
+                            text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+                            font-weight: 700;
+                            margin: 0 !important;
+                            box-shadow: 0 4px 15px rgba(200, 200, 200, 0.3) !important;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          ha-card:active {
+                            transform: scale(0.95) !important;
+                          }
