@@ -17,15 +17,36 @@ views:
             use_light_color: true
             fill_container: true
 
+          # ── Speed & Intensity sliders ──
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-number-card
+                entity: number.wled_speed
+                name: Скорость
+                icon: mdi:speedometer
+                fill_container: true
+              - type: custom:mushroom-number-card
+                entity: number.wled_intensity
+                name: Яркость эффекта
+                icon: mdi:blur-radial
+                fill_container: true
+
+          # ── Section headers ──
+          - type: horizontal-stack
+            cards:
+              - type: markdown
+                content: "## ✨ Эффекты"
+              - type: markdown
+                content: "## ✨ Эффекты"
+              - type: markdown
+                content: "## 🎨 Цвета"
+
           # ── Bottom: 3 equal columns = 2/3 effects + 1/3 palettes ──
           - type: horizontal-stack
             cards:
               # ── Column 1: Effects 1-15 ──
               - type: vertical-stack
                 cards:
-                  - type: markdown
-                    content: "## ✨ Эффекты"
-
                   - type: custom:mushroom-template-card
                     primary: Радуга
                     icon: mdi:rainbow
@@ -37,7 +58,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Rainbow
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Салют
@@ -50,7 +70,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fireworks
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Огонь
@@ -63,7 +82,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fire 2012
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Сияние
@@ -76,7 +94,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Aurora
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Фея
@@ -89,7 +106,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fairy
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Звёзды
@@ -102,7 +118,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Twinkle
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Свеча
@@ -115,7 +130,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Candle
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Молния
@@ -128,7 +142,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Lightning
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Сердце
@@ -141,7 +154,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Heartbeat
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Океан
@@ -154,7 +166,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Pacifica
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Блеск
@@ -167,7 +178,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Sparkle
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Цвета
@@ -180,7 +190,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Colorloop
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Метеор
@@ -193,7 +202,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Meteor
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Дождь
@@ -206,7 +214,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Rain
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Призрак
@@ -219,14 +226,10 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Ghost Rider
-                        brightness_pct: 100
 
               # ── Column 2: Effects 16-30 ──
               - type: vertical-stack
                 cards:
-                  - type: markdown
-                    content: "## ⠀"
-
                   - type: custom:mushroom-template-card
                     primary: Мячики
                     icon: mdi:basketball
@@ -238,7 +241,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Bouncing Balls
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Матрица
@@ -251,7 +253,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Matrix
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Полярное
@@ -264,7 +265,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Polar Lights
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Волны
@@ -277,7 +277,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Colorwaves
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Лисичка
@@ -290,7 +289,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Twinklefox
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Глиттер
@@ -303,7 +301,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Glitter
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Рассвет
@@ -316,7 +313,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Sunrise
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Озеро
@@ -329,7 +325,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Lake
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Пчёлки
@@ -342,7 +337,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Crazy Bees
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Попкорн
@@ -355,7 +349,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Popcorn
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: ДНК
@@ -368,7 +361,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: DNA Spiral
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Плазма
@@ -381,7 +373,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Plasma Ball
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Поток
@@ -394,7 +385,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Flow
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Взрыв
@@ -407,7 +397,6 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Fireworks Starburst
-                        brightness_pct: 100
 
                   - type: custom:mushroom-template-card
                     primary: Растворение
@@ -420,14 +409,10 @@ views:
                       data:
                         entity_id: light.wled
                         effect: Dissolve Rnd
-                        brightness_pct: 100
 
               # ── Column 3: Palettes ──
               - type: vertical-stack
                 cards:
-                  - type: markdown
-                    content: "## 🎨 Цвета"
-
                   - type: custom:mushroom-template-card
                     primary: Радуга
                     icon: mdi:rainbow
